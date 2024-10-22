@@ -301,25 +301,25 @@
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="active">
-                        <a href="index.html">
+                        <a href="">
                             <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
                     </li>
                     <li class="active">
-                        <a href="index.html">
+                        <a href="pelanggan.php">
                             <i class="material-icons">person</i>
                             <span>Pelanggan</span>
                         </a>
                     </li>
                     <li class="active">
-                        <a href="index.html">
+                        <a href="">
                             <i class="material-icons">post_add</i>
                             <span>Laporan</span>
                         </a>
                     </li>
                     <li class="active">
-                        <a href="index.html">
+                        <a href="">
                         <i class="material-icons">loyalty</i>
                         <span>Membership</span>
                         </a>
