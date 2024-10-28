@@ -1,17 +1,18 @@
-<?php 
+
+            <?php 
 include_once('templat/header.php')
 ?>
 
 <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-                <h2 style="font-size: 50; color:white;"">PELANGGAN</h2>
+                <h2>DASHBOARD</h2>
                 <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
                             <h2>
-                                BASIC EXAMPLE
+                                EXPORTABLE TABLE
                             </h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
@@ -28,7 +29,7 @@ include_once('templat/header.php')
                         </div>
                         <div class="body">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                     <thead>
                                         <tr>
                                             <th>Name</th>
@@ -37,7 +38,6 @@ include_once('templat/header.php')
                                             <th>Age</th>
                                             <th>Start date</th>
                                             <th>Salary</th>
-                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -48,16 +48,15 @@ include_once('templat/header.php')
                                             <td>61</td>
                                             <td>2011/04/25</td>
                                             <td>$320,800</td>
-                                            <td>
-                                                <a href="editTamu.php?id=<?= $tamu['id_tamu'] ?>" class="btn btn-success">Ubah</a>
-                                                <a onclick="confirm('apakah kamu yakin ingin menghapus data ini?')" class="btn btn-danger" type="button" href="HapusTamu.php?id=<?= $tamu['id_tamu']?>">hapus</a>
-                                            </td>
                                         </tr>
+                                        
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
             </div>
         </div>
 </section>

@@ -30,6 +30,11 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="assets/css/themes/all-themes.css" rel="stylesheet" />
+    <!-- Animation Css -->
+    <link href="assets/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- JQuery DataTable Css -->
+    <link href="assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
 </head>
 
 <body class="theme-red">
@@ -66,7 +71,7 @@
     <!-- #END# Search Bar -->
     <!-- Top Bar -->
     <nav class="navbar">
-        <div class="container-fluid" style="background-color: #8ba888;">
+        <div class="container-fluid" >
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
@@ -301,7 +306,7 @@
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="active">
-                        <a href="">
+                        <a href="index.php">
                             <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
@@ -313,15 +318,21 @@
                         </a>
                     </li>
                     <li class="active">
-                        <a href="">
+                        <a href="laporan.php">
                             <i class="material-icons">post_add</i>
                             <span>Laporan</span>
                         </a>
                     </li>
                     <li class="active">
-                        <a href="">
+                        <a href="membership.php">
                         <i class="material-icons">loyalty</i>
                         <span>Membership</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="admin.php">
+                        <i class="material-icons">admin_panel_settings</i>
+                        <span>Admin</span>
                         </a>
                     </li>
                 </ul>
@@ -483,3 +494,4 @@
         </aside>
         <!-- #END# Right Sidebar -->
     </section>
+    
