@@ -1,17 +1,18 @@
-    <?php 
-include_once('templat/header.php')
+<?php 
+require_once('function.php');
+include_once('templat/header.php');
 ?>
 
 <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-                <h2>DASHBOARD</h2>
+                <h2>Member barbershop</h2>
                 <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
                             <h2>
-                                EXAMPLE
+                                Tabel Member
                             </h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
@@ -30,19 +31,33 @@ include_once('templat/header.php')
                             <table id="mainTable" class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Cost</th>
-                                        <th>Profit</th>
-                                        <th>Fun</th>
+                                        <th>No</th>
+                                        <th>Tanggal</th>
+                                        <th>Nama Member</th>
+                                        <th>Alamat</th>
+                                        <th>No_hp</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php
+                                    $no = 1;
+
+                                    $barbershop = query("SELECT * FROM member");
+                                    foreach($barbershop as $member) : ?>
+                                    
                                     <tr>
-                                        <td>Car</td>
-                                        <td>100</td>
-                                        <td>200</td>
-                                        <td>0</td>
+                                        <td><?= $no++; ?></td>
+                                        <td><?= $member['tanggal'] ?></td>
+                                        <td><?= $member['nama'] ?></td>
+                                        <td><?= $member['alamat'] ?></td>
+                                        <td><?= $member['no_hp'] ?></td>
+                                        <td><?= $member['status'] ?></td>
+                                        <td><button class="btn btn-success" type="button">Ubah</button>
+                                            <button class="btn btn-danger" type="button">Hapus</button></td>
+                                        
                                     </tr>
+                                    <?php endforeach; ?>
                                     
                                 </tbody>
                                
