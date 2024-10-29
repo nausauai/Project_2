@@ -33,6 +33,13 @@
     <!-- Animation Css -->
     <link href="assets/plugins/animate-css/animate.css" rel="stylesheet" />
 
+    <!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+
+<!-- DataTables jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
     <!-- JQuery DataTable Css -->
     <link href="assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
 </head>
@@ -311,12 +318,7 @@
                             <span>Home</span>
                         </a>
                     </li>
-                    <li class="active">
-                        <a href="pelanggan.php">
-                            <i class="material-icons">person</i>
-                            <span>Pelanggan</span>
-                        </a>
-                    </li>
+                    
                     <li class="active">
                         <a href="laporan.php">
                             <i class="material-icons">post_add</i>
