@@ -304,15 +304,21 @@
                     </li>
                     
                     <li class="active">
-                        <a href="laporan.php">
-                            <i class="material-icons">post_add</i>
-                            <span>Laporan</span>
+                        <a href="member.php">
+                            <i class="material-icons">loyalty</i>
+                            <span>Member</span>
                         </a>
                     </li>
                     <li class="active">
-                        <a href="member.php">
-                        <i class="material-icons">loyalty</i>
-                        <span>Member</span>
+                        <a href="transaksi.php">
+                            <i class="material-icons">receipt_long</i>
+                            <span>Transaksi</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="laporan.php">
+                            <i class="material-icons">post_add</i>
+                            <span>Laporan</span>
                         </a>
                     </li>
                     <li class="active">
