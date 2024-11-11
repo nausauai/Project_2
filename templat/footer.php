@@ -65,5 +65,19 @@
 <!-- <script src="assets/js/admin.js"></script> -->
 <script src="assets/js/pages/tables/jquery-datatable.js"></script>
 
+<script>
+        $(document).ready(function() {
+             window.setTimeout(function() {
+                $(".alert"). fadeTo(500, 0). slideUp(500, function(){
+                     $(this). remove();
+                });
+             }, 4000);
+        });
+</script>
+
+</body>
+
+</html>
+
 
 
