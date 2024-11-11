@@ -78,7 +78,7 @@ include_once('templat/header.php');
                                         <td><?= $member['no_hp'] ?></td>
                                         <td><?= $member['status'] ?></td>
                                         <td>
-                                            <form action="" method="post"></form><button class="btn btn-success" type="button">Ubah</button>
+                                            <button class="btn btn-success" type="button">Ubah</button>
                                             <button class="btn btn-danger" type="submit">Hapus</button>
                                         </td>
                                         
