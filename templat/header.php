@@ -270,7 +270,7 @@
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
             <!-- User Info -->
-            <div class="user-info">
+            <div class="user-info" >
                 <div class="image">
                     <img src="assets/images/user.png" width="48" height="48" alt="User" />
                 </div>

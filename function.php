@@ -17,7 +17,7 @@ function tambah_member($data) {
     global $koneksi;
 
     $kode = htmlspecialchars($data["id_member"]);
-    $tanggal = ("Y-m-d");
+    $tanggal = date("Y-m-d");
     $nama_member = htmlspecialchars($data["nama_member"]);
     $alamat = htmlspecialchars($data["alamat"]);
     $no_hp = htmlspecialchars($data["no_hp"]);
