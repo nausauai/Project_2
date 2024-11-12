@@ -1,40 +1,44 @@
 <?php 
 include_once('templat/header.php')
 ?>
+
 <?php 
 require('./koneksi.php');
-if(isset($_GET['id']) && isset($_POST['nama']) && isset($_POST['alamat']) && isset($_POST['nomer'])){
-    
+if(isset($_GET['id']) && isset($_POST['role'])){
 
-        $id = $_GET['id'];
-        $nama_member = $_POST['nama'];
-        $alamat = $_POST['alamat'];
-        $nomer = $_POST['nomer'];
-        $role = $_POST['role'];
-        $sql = "update member set nama = '$nama_member', alamat = '$alamat', no_hp = '$nomer', status = '$role' where id_member = '$id'";
-        if(mysqli_query($koneksi, $sql)){
-            if(mysqli_affected_rows($koneksi) > 0 ){
-                echo "<script>alert('data berhasil di ubah')</script>";
-                echo "<script>window.location.href='member.php'</script>";
-            }else {
-                echo "<script>alert('data gagal di ubah')</script>";
-                echo "<script>window.location.href='member.php'</script>";
+    $id = $_GET['id'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $role = $_POST['role'];
     
-            }
+    
+    $sql ="update user set username = '$username', password = '$password', role = '$role' where id_user = '$id'";
+    if(mysqli_query($koneksi,$sql)){
+        if(mysqli_affected_rows($koneksi) > 0) {
+            echo "<script>alert('data berhasil di ubah')</script>";
+            echo "<script>window.location.href='admin.php'</script>";
+        } else {
+            echo "<script>alert('data gagal di ubah')</script>";
+            echo "<script>window.location.href='admin.php'</script>";
+
         }
+    } else {
+        echo "<script>alert('data gagal di ubah')</script>";
+        echo "<script>window.location.href='admin.php'</script>";
+    }
     
-
 }
+
 ?>
 <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-                <h2>Edit Member</h2>
+                <h2>DASHBOARD</h2>
                 <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <h2>UBAH MEMBER</h2>
+                            <h2>UBAH ADMIN/USER</h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
                                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -52,27 +56,21 @@ if(isset($_GET['id']) && isset($_POST['nama']) && isset($_POST['alamat']) && iss
                             <form id="form_advanced_validation" method="POST" action="">
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <label class="form-label">Nama member</label>
-                                        <input type="text" class="form-control" name="nama" maxlength="10" minlength="3" required>
+                                        <label class="form-label">Username</label>
+                                        <input type="text" class="form-control" name="username" maxlength="10" minlength="3" required>
                                     </div>
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <label class="form-label">Alamat</label>
-                                        <input type="text" class="form-control" name="alamat" min="10" max="200" required>
-                                    </div>
-                                </div>
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <label class="form-label">No. Telp.</label>
-                                        <input type="text" class="form-control" name="nomer" min="10" max="200" required>
+                                        <label class="form-label">Password</label>
+                                        <input type="text" class="form-control" name="password" min="10" max="200" required>
                                     </div>
                                 </div>
                                 <label for="status" class="col-sm-3 col-form-label">Status</label>
                                         <div class="col-sm-8">
                                             <select class="custom-select" name="role" id="role">
-                                                <option value="Reguler">Reguler</option>
-                                                <option value="Vip">Vip</option>
+                                                <option value="operator">Operator</option>
+                                                <option value="admin">Admin</option>
                                             </select>
                                         </div>
                                 
@@ -116,8 +114,6 @@ if(isset($_GET['id']) && isset($_POST['nama']) && isset($_POST['alamat']) && iss
 
 <!-- Demo Js -->
 <script src="../../js/demo.js"></script>
-
-
 <?php 
 include_once('templat/footer.php')
 ?>

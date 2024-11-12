@@ -1,8 +1,8 @@
 <?php
-define('HOST_NAME' , 'localhost');
-define('USER_NAME' , 'root');
-define('PASSWORD' , '');
-define('DB_NAME' , 'barbershop');
-
-$koneksi = mysqli_connect(HOST_NAME, USER_NAME, PASSWORD, DB_NAME);
+$koneksi = mysqli_connect(
+    hostname: "localhost",
+    username: "root",
+    password: "",
+    database: "barbershop"
+)
 ?>
