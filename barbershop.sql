@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 01, 2024 at 04:31 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Waktu pembuatan: 12 Nov 2024 pada 02.25
+-- Versi server: 10.4.32-MariaDB
+-- Versi PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,42 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detail_transaksi`
---
-
-CREATE TABLE `detail_transaksi` (
-  `id_detail` int(10) NOT NULL,
-  `id_transaksi` int(10) NOT NULL,
-  `id_layanan` int(10) NOT NULL,
-  `harga` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `layanan`
---
-
-CREATE TABLE `layanan` (
-  `id_layanan` int(10) NOT NULL,
-  `nama_layanan` enum('Cukur rambut','Cukur jenggot/Kumis','Cukur + Keramas','Full service') NOT NULL,
-  `harga` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `layanan`
---
-
-INSERT INTO `layanan` (`id_layanan`, `nama_layanan`, `harga`) VALUES
-(1, 'Cukur rambut', 30000),
-(2, 'Cukur jenggot/Kumis', 15000),
-(4, 'Cukur + Keramas', 45000),
-(5, 'Full service', 70000);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `member`
+-- Struktur dari tabel `member`
 --
 
 CREATE TABLE `member` (
@@ -67,37 +32,46 @@ CREATE TABLE `member` (
   `tanggal` date NOT NULL,
   `nama` varchar(255) NOT NULL,
   `alamat` varchar(255) NOT NULL,
-  `no_hp` int(15) NOT NULL,
+  `no_hp` varchar(15) NOT NULL,
   `status` enum('Vip','Regular') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `member`
+-- Dumping data untuk tabel `member`
 --
 
 INSERT INTO `member` (`id_member`, `tanggal`, `nama`, `alamat`, `no_hp`, `status`) VALUES
-(1, '2024-09-11', 'Airil', 'Kp.bojong herang', 89976893, 'Regular'),
-(2, '2024-10-02', 'dudun', 'kp.marhamah', 81122432, 'Vip');
+(15, '2024-11-11', 'ratu', 'Jl harapan harapan', '085798157896', 'Vip'),
+(16, '2024-11-11', 'Rifki Muhammad Fadhil', 'jalan sakahayang', '12312321', 'Vip'),
+(17, '2024-11-12', 'ryanti', 'jalan harapan', '2345678', 'Vip');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transaksi`
+-- Struktur dari tabel `transaksi`
 --
 
 CREATE TABLE `transaksi` (
-  `id_transaksi` int(10) NOT NULL,
-  `id_member` int(10) NOT NULL,
-  `id_guest` int(10) NOT NULL,
-  `tanggal_transaksi` date NOT NULL,
-  `jumlah_layanan` int(11) NOT NULL,
-  `total_bayar` varchar(255) NOT NULL
+  `id_layanan` int(5) NOT NULL,
+  `nama` varchar(30) NOT NULL,
+  `layanan` enum('potong_rambut','keramas_pijatkepala','smoothing','perming','paket1') NOT NULL,
+  `member` enum('yes','no') NOT NULL,
+  `harga` int(15) NOT NULL,
+  `total` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `transaksi`
+--
+
+INSERT INTO `transaksi` (`id_layanan`, `nama`, `layanan`, `member`, `harga`, `total`) VALUES
+(1, 'Rifki', 'paket1', '', 10000, 10000),
+(3, 'Rifki', 'perming', 'yes', 10000, 10000);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -108,92 +82,60 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data untuk tabel `user`
+--
+
+INSERT INTO `user` (`id_user`, `username`, `password`, `role`) VALUES
+(23, 'dolu', '1234', 'Admin'),
+(24, 'sakyy', '12345', 'Admin'),
+(25, 'ahay', '123456', 'Operator'),
+(26, 'turky', '12334', 'Admin'),
+(27, 'admin', '12134', 'Operator'),
+(28, 'ahay', '213456', 'Admin');
+
+--
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `detail_transaksi`
---
-ALTER TABLE `detail_transaksi`
-  ADD PRIMARY KEY (`id_detail`),
-  ADD UNIQUE KEY `id_transaksi` (`id_transaksi`),
-  ADD UNIQUE KEY `id_layanan` (`id_layanan`);
-
---
--- Indexes for table `layanan`
---
-ALTER TABLE `layanan`
-  ADD PRIMARY KEY (`id_layanan`);
-
---
--- Indexes for table `member`
+-- Indeks untuk tabel `member`
 --
 ALTER TABLE `member`
   ADD PRIMARY KEY (`id_member`);
 
 --
--- Indexes for table `transaksi`
+-- Indeks untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
-  ADD PRIMARY KEY (`id_transaksi`),
-  ADD UNIQUE KEY `id_member` (`id_member`);
+  ADD PRIMARY KEY (`id_layanan`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `detail_transaksi`
---
-ALTER TABLE `detail_transaksi`
-  MODIFY `id_detail` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `layanan`
---
-ALTER TABLE `layanan`
-  MODIFY `id_layanan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `member`
+-- AUTO_INCREMENT untuk tabel `member`
 --
 ALTER TABLE `member`
-  MODIFY `id_member` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_member` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `transaksi`
+-- AUTO_INCREMENT untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_layanan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `detail_transaksi`
---
-ALTER TABLE `detail_transaksi`
-  ADD CONSTRAINT `detail_transaksi_ibfk_1` FOREIGN KEY (`id_transaksi`) REFERENCES `transaksi` (`id_transaksi`),
-  ADD CONSTRAINT `detail_transaksi_ibfk_2` FOREIGN KEY (`id_layanan`) REFERENCES `layanan` (`id_layanan`);
-
---
--- Constraints for table `transaksi`
---
-ALTER TABLE `transaksi`
-  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`id_member`) REFERENCES `member` (`id_member`);
+  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -112,7 +112,7 @@ include_once('templat/footer.php')
                 <h5 class="modal-title" id="formModalLabel">Horizontal Layout Form</h5>
             </div> <hr>
             <div class="modal-body">
-                <form class="form-horizontal" method="post" action="tambah.php">
+                <form class="form-horizontal" method="post" action="tambah_admin.php">
                     <div class="row clearfix" style="margin-bottom: 20px;">
                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                             <label for="username">Username</label>

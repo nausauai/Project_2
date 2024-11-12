@@ -28,40 +28,54 @@ include_once('templat/header.php')
                         </div>
                         <div class="body">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                <?php 
+                                require('./koneksi.php');
+                                $sql = mysqli_query( $koneksi, "select * from transaksi");
+                                $no = 1;
+                                $simpen = '
+                                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>No</th>
+                                            <th>Tanggal</th>
+                                            <th>Nama</th>
+                                            <th>Layanan</th>
+                                            <th>Member</th>
+                                            <th>Harga</th>
+                                            <th>
+                                            aksi
+                                            </th>
+                                        
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
+                                ';
+                                foreach($sql as $data){
+                                    $simpen .= "
+                                    
                                     </tr>
                                         <tr>
-                                            <td>Garrett Winters</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>63</td>
-                                            <td>2011/07/25</td>
-                                            <td>$170,750</td>
+                                            <td>$no</td>
+                                            <td>{$data['tanggal']}</td>
+                                            <td>{$data['nama']}</td>
+                                            <td>{$data['layanan']}</td>
+                                            <td>{$data['member']}</td>
+                                            <td>{$data['harga']}</td>
+                                            <td> <a type='button' class='btn btn-secondary'>Ubah
+                                             <a type='button' class='btn btn-secondary'>Hapus</td>
                                         </tr>
                                     
-                                    </tbody>
-                                </table>
+                                
+                                    ";
+                                    $no++;
+                                }
+                                $simpen .= ' 
+                                </tbody>
+                                </table>';
+
+                                echo $simpen;
+                                ?>
+                                
                             </div>
                         </div>
                     </div>
