@@ -78,8 +78,30 @@ include_once('templat/header.php');
                                         <td><?= $member['no_hp'] ?></td>
                                         <td><?= $member['status'] ?></td>
                                         <td>
-                                            <button class="btn btn-success" type="button">Ubah</button>
-                                            <button class="btn btn-danger" type="submit">Hapus</button>
+                                            <a class="btn btn-success" type="button" href="edit_member.php?id=<?= $member['id_member']; ?>">Ubah</a>
+
+                                            <a class='btn btn-danger' type='submit'  data-toggle='modal' data-target='#modal-hapus'>Hapus</a>
+                                            <div class='modal fade' tabindex='-1' id='modal-hapus'>
+                                                <div class='modal-dialog'>
+                                                    <div class='modal-content'>
+                                                    <div class='modal-header'>
+                                                        <h5 class='modal-title'>Hapus member</h5>
+                                                        <!-- <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button> -->
+                                                    </div>
+                                                    <div class='modal-body'>
+                                                        <p>Yakin ingin menghapus member ini??</p>
+                                                    </div>
+                                                    <div class='modal-footer'>
+                                                        <button  class='btn btn-secondary' data-bs-dismiss='modal' data-dismiss='modal'>
+                                                            Close
+                                                            
+                                                        </button>
+                                                        <a type='button' class='btn btn-danger' href='hapus.php?id=<?= $member['id_member']; ?>'>Hapus...</a>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </td>
                                         
                                     </tr>
@@ -98,23 +120,6 @@ include_once('templat/header.php');
             </div>
         </div>
 </section>
-
-
-
-<?php
-    $query = mysqli_query($koneksi, "SELECT max(id_member) as kodeTerbesar FROM member");
-    $data = mysqli_fetch_array($query);
-    $kodeMember = $data['kodeTerbesar'];
-
-
-    $urutan = (int) substr($kodeMember, 2, 3);
-
-    $urutan++;
-
-
-    $huruf = "mb";
-    $kodeMember = $huruf . sprintf("%03s", $urutan);
-?>
 <!-- Modal tambah -->
 <div class="modal fade" id="tambahModal" tabindex="-1" role="dialog">
                 <div class="modal-dialog">
