@@ -11,8 +11,16 @@ include_once('templat/header.php')
                     <div class="card">
                         <div class="header">
                             <h2>
-                                BASIC EXAMPLE
+                                Transaksi
                             </h2>
+                            <div class="card-header py-3">
+                                    <button type="button" class=" btn bg-deep-orange waves-effect "  data-target="#tambahModal" data-toggle="modal" >
+                                        <span class="icon text-white-50">
+                                            <i class="material-icons">add</i>
+                                        </span>
+                                        <span class="text" >Data Transaksi</span>
+                                    </button>
+                                </div>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
                                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -31,6 +39,9 @@ include_once('templat/header.php')
                                 <?php 
                                 require('./koneksi.php');
                                 $sql = mysqli_query( $koneksi, "select * from transaksi");
+                                $sqlna = mysqli_query($koneksi, "select sum(harga) as harga from transaksi");
+                                $result = mysqli_fetch_assoc($sqlna);
+                                $total = $result['harga'];
                                 $no = 1;
                                 $simpen = '
                                         <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
@@ -48,6 +59,20 @@ include_once('templat/header.php')
                                         
                                         </tr>
                                     </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th>Total :</th>
+                                            <th>'. $total . '</th>
+                                            <th>
+                                            
+                                            </th>
+                                        
+                                        </tr>
+                                    </tfoot>
                                     <tbody>
                                 ';
                                 foreach($sql as $data){
@@ -61,8 +86,10 @@ include_once('templat/header.php')
                                             <td>{$data['layanan']}</td>
                                             <td>{$data['member']}</td>
                                             <td>{$data['harga']}</td>
-                                            <td> <a type='button' class='btn btn-secondary'>Ubah
-                                             <a type='button' class='btn btn-secondary'>Hapus</td>
+                                            <td> 
+                                                <a type='button' class='btn btn-secondary'>Ubah<a>
+                                                <a type='button' class='btn btn-secondary' href='hapus.php?idtrans={$data['id_layanan']}'>Hapus</a>
+                                            </td>
                                         </tr>
                                     
                                 
@@ -84,6 +111,66 @@ include_once('templat/header.php')
             </div>
         </div>
 </section>
+
+<!-- Modal tambah -->
+<div class="modal fade" id="tambahModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="tambahModalLabel">Tambah Transaksi</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" action="tambah.php" >
+                                    <input type="hidden" class="form-control" id="tanggal" name="tanggal">
+                                    <input type="hidden" class="form-control" id="harga" name="harga">
+
+                                    <div class="form-group row">                       
+                                        <label for="nama_transaksi" class="col-sm-3 col-form-label"> Nama Transaksi</label>
+                                        <div class="col-sm-8">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" id="nama_transaksi" name="nama_transaksi">
+                                            </div>  
+                                        </div>
+                                        
+                                    </div>
+                                
+                                    
+                                    <div class="form-group row">
+                                    <label for="member" class="col-sm-3 col-form-label">Member</label>
+                                        <div class="col-sm-8">
+                                            <select class="custom-select" name="member" id="member">
+                                                <option value="yes">Iya</option>
+                                                <option value="no">Bukan</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                    <label for="layanan" class="col-sm-3 col-form-label">Layanan</label>
+                                        <div class="col-sm-8">
+                                            <select class="custom-select" name="layanan" id="layanan">
+                                                <option value="potong_rambut">Cukur rambut</option>
+                                                <option value="keramas_pijatkepala">keramas_pijat + kepala</option>
+                                                <option value="smoothing">Smoothing</option>
+                                                <option value="perming">Perming</option>
+                                                <option value="paket1">Paket 1 (Cukur rambut + keramas pijat + kepala)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">keluar</button>
+                                        <button type="submit" class="btn btn-primary" name="transaksii">simpan</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                        
+                            </div>
+                        </div>
+                    </div>
 
 <?php 
 include_once('templat/footer.php')

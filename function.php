@@ -29,4 +29,9 @@ function tambah_member($data) {
 
     return mysqli_affected_rows($koneksi);
 }
+
+function ubahTransaksi($data){
+    
+
+}
 ?>

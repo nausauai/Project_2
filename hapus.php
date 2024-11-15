@@ -25,4 +25,16 @@ if(isset($_GET['idmin'])){
     }
 }
 
+if(isset($_GET['idtrans'])){
+    $id = $_GET['idtrans'];
+    mysqli_query($koneksi, "delete from transaksi where id_layanan = '$id'");
+    if(mysqli_affected_rows($koneksi)> 0){
+        echo "<script>alert('data berhasil di hapus')</script>";
+        echo "<script>window.location.href='transaksi.php'</script>";
+    } else {
+        echo "<script>alert('data gagal di hapus')</script>";
+            echo "<script>window.location.href='transaksi.php'</script>";
+    }
+}
+
 ?>

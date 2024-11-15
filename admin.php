@@ -15,8 +15,14 @@ include_once('templat/header.php')
                             <h2>
                                 Data user
                             </h2>
-                            <button data-target="#modal-tambah" data-toggle="modal" class="btn btn-outline-warning" style="margin-top: 15px;">Tambah Admin</button>
-                            <ul class="header-dropdown m-r--5">
+                            <div class="card-header py-3">
+                                    <button type="button" class=" btn bg-deep-orange waves-effect " data-toggle="modal" data-target="#modal-tambah"data-toggle="modal" >
+                                        <span class="icon text-white-50">
+                                            <i class="material-icons">add</i>
+                                        </span>
+                                        <span class="text" >Data admin</span>
+                                    </button>
+                                </div>                            <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
                                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                         <i class="material-icons">more_vert</i>
@@ -34,7 +40,7 @@ include_once('templat/header.php')
                             require('./koneksi.php');
                             $sql = mysqli_query($koneksi, "select * from user");
                             $simpen = '
-                             <table class="table table-hover">
+                            <table class="table table-hover">
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -69,7 +75,7 @@ include_once('templat/header.php')
                                                         <p>Yakin ingin menghapus member ini??</p>
                                                     </div>
                                                     <div class='modal-footer'>
-                                                        <button  class='btn btn-secondary' data-bs-dismiss='modal' data-dismiss='modal'>
+                                                        <button  class='btn btn-secondary' data-dismiss='modal'>
                                                             Close
                                                             
                                                         </button>
@@ -109,10 +115,10 @@ include_once('templat/footer.php')
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header" style="margin-bottom: 25px; margin-top: 50px">
-                <h5 class="modal-title" id="formModalLabel">Horizontal Layout Form</h5>
+                <h5 class="modal-title" id="formModalLabel">Tambah Data</h5>
             </div> <hr>
             <div class="modal-body">
-                <form class="form-horizontal" method="post" action="tambah_admin.php">
+                <form class="form-horizontal" method="post" action="./aksi/tambah.php">
                     <div class="row clearfix" style="margin-bottom: 20px;">
                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                             <label for="username">Username</label>
@@ -148,10 +154,10 @@ include_once('templat/footer.php')
                     </div>
                     
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Simpan</button>
+                        <button type="submit" class="btn btn-success" data-bs-dismiss="modal" name="adminn">Simpan</button>
                     </div>
                 </form>
             </div>

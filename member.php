@@ -42,7 +42,7 @@ include_once('templat/header.php');
                             </h2>
                             <br>
                             <div class="card-header py-3">
-                            <button type="button" class=" btn bg-deep-orange waves-effect " data-toggle="modal" data-target="#tambahModal">
+                            <button type="button" class=" btn bg-deep-orange waves-effect " data-toggle="modal" data-target="#tambahModal"data-toggle="modal" data-target="#tambahModal">
                                 <span class="icon text-white-50">
                                     <i class="material-icons">add</i>
                                 </span>
@@ -93,9 +93,7 @@ include_once('templat/header.php');
                                                     </div>
                                                     <div class='modal-footer'>
                                                         <button  class='btn btn-secondary' data-bs-dismiss='modal' data-dismiss='modal'>
-                                                            Close
-                                                            
-                                                        </button>
+                                                            Close</button>
                                                         <a type='button' class='btn btn-danger' href='hapus.php?id=<?= $member['id_member']; ?>'>Hapus...</a>
                                                     </div>
                                                     </div>
