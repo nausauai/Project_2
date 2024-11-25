@@ -1,5 +1,11 @@
 <?php 
-include_once('templat/header.php')
+include_once('templat/header.php');
+session_start();
+$role = $_SESSION['user_role'];
+if($role == 'Operator'){
+    echo "<script>alert('Anda tidak memiliki akses')</script>";
+    echo "<script>window.location.href='index.php'</script>";
+}
 ?>
 
 
@@ -13,7 +19,7 @@ include_once('templat/header.php')
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Data user
+                                Data user <?= $role; ?>
                             </h2>
                             <div class="card-header py-3">
                                     <button type="button" class=" btn bg-deep-orange waves-effect " data-toggle="modal" data-target="#modal-tambah"data-toggle="modal" >
@@ -63,8 +69,8 @@ include_once('templat/header.php')
                                             <td>
                                             <a class='btn btn-success' type='button' href='edit_atmin.php?id={$data['id_user']}'>Ubah</a>
                                             
-                                            <a class='btn btn-danger' type='submit'  data-toggle='modal' data-target='#modal-hapus'>Hapus</a>
-                                            <div class='modal fade' tabindex='-1' id='modal-hapus'>
+                                            <a class='btn btn-danger' type='submit'  data-toggle='modal' data-target='#modal-hapus{$data['id_user']}'>Hapus</a>
+                                            <div class='modal fade' tabindex='-1' id='modal-hapus{$data['id_user']}'>
                                                 <div class='modal-dialog'>
                                                     <div class='modal-content'>
                                                     <div class='modal-header'>
@@ -118,7 +124,7 @@ include_once('templat/footer.php')
                 <h5 class="modal-title" id="formModalLabel">Tambah Data</h5>
             </div> <hr>
             <div class="modal-body">
-                <form class="form-horizontal" method="post" action="./aksi/tambah.php">
+                <form class="form-horizontal" method="post" action="./tambah.php">
                     <div class="row clearfix" style="margin-bottom: 20px;">
                         <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                             <label for="username">Username</label>

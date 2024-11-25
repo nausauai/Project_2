@@ -1,3 +1,13 @@
+<?php 
+session_start();
+if(!isset($_SESSION['login'])){
+    header('Location: login.php');
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -80,7 +90,7 @@
                             <span class="label-count">7</span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="header">NOTIFICATIONS</li>
+                            <li class="header"><?= $_SESSION['user_role']; ?></li>
                             <li class="body">
                                 <ul class="menu">
                                     <li>
@@ -275,7 +285,7 @@
                     <img src="assets/images/user.png" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nuansauai</div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $_SESSION['username']; ?></div>
                     <div class="email">suadirection@gmail.com</div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
@@ -325,6 +335,12 @@
                         <a href="admin.php">
                         <i class="material-icons">admin_panel_settings</i>
                         <span>Admin</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="logout.php">
+                        <i class="material-icons">admin_panel_settings</i>
+                        <span>Logout</span>
                         </a>
                     </li>
                 </ul>

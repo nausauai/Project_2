@@ -1,8 +1,9 @@
 <?php 
 require('./koneksi.php');
+require('./function.php');
 if(isset($_POST['adminn'])){
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
     $role = $_POST['role'];
     $sql = "insert into user(username,password,role) values('$username','$password','$role')";
     if(mysqli_query($koneksi,$sql)) {
@@ -20,22 +21,7 @@ if(isset($_POST['transaksii'])) {
     $tanggal = date("Y-m-d");
     $layanan = htmlspecialchars($_POST['layanan']);
     $harga = htmlspecialchars($_POST['harga']);
-    if($layanan == 'smoothing'){
-        $harga = 150000;
-    }
-    if($layanan == 'potong_rambut'){
-        $harga = 20000;
-    }
-    if($layanan == 'perming'){
-        $harga = 250000;
-    }
-    if($layanan == 'keramas_pijatkepala'){
-        $harga = 15000;
-    }
-    if($layanan == 'paket1'){
-        $harga = 45000;
-    }
-    $harga_titik = number_format($harga,0,',','.');
+    $harga = gethargaLayanan($layanan);
 
     $sql = "insert into transaksi(nama,tanggal,layanan,harga,member) values ('$namaTransaksi','$tanggal','$layanan',$harga,'$member')";
     if(mysqli_query($koneksi, $sql)){

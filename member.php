@@ -80,8 +80,8 @@ include_once('templat/header.php');
                                         <td>
                                             <a class="btn btn-success" type="button" href="edit_member.php?id=<?= $member['id_member']; ?>">Ubah</a>
 
-                                            <a class='btn btn-danger' type='submit'  data-toggle='modal' data-target='#modal-hapus'>Hapus</a>
-                                            <div class='modal fade' tabindex='-1' id='modal-hapus'>
+                                            <a class='btn btn-danger' type='submit'  data-toggle='modal' data-target='#modal-hapus<?= $member['id_member']; ?>'>Hapus</a>
+                                            <div class='modal fade' tabindex='-1' id='modal-hapus<?= $member['id_member']; ?>'>
                                                 <div class='modal-dialog'>
                                                     <div class='modal-content'>
                                                     <div class='modal-header'>

@@ -30,8 +30,25 @@ function tambah_member($data) {
     return mysqli_affected_rows($koneksi);
 }
 
-function ubahTransaksi($data){
-    
-
+function gethargaLayanan($layanan){
+    $result = 0;
+    if($layanan == 'smoothing'){
+        $result = 150000;
+    }
+    if($layanan == 'potong_rambut'){
+        $result = 20000;
+    }
+    if($layanan == 'perming'){
+        $result = 250000;
+    }
+    if($layanan == 'keramas_pijatkepala'){
+        $result = 15000;
+    }
+    if($layanan == 'paket1'){
+        $result = 45000;
+    }
+    return $result;
 }
+
+
 ?>

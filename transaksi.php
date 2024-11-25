@@ -87,8 +87,8 @@ include_once('templat/header.php')
                                             <td>{$data['member']}</td>
                                             <td>{$data['harga']}</td>
                                             <td> 
-                                                <a type='button' class='btn btn-secondary'>Ubah<a>
-                                                <a type='button' class='btn btn-secondary' href='hapus.php?idtrans={$data['id_layanan']}'>Hapus</a>
+                                                <a type='button' class='btn btn-success' href='edit_transaksi.php?id={$data['id_layanan']}'>Ubah<a>
+                                                <a type='button' class='btn btn-danger' href='hapus.php?idtrans={$data['id_layanan']}'>Hapus</a>
                                             </td>
                                         </tr>
                                     
@@ -155,7 +155,7 @@ include_once('templat/header.php')
                                                 <option value="keramas_pijatkepala">keramas_pijat + kepala</option>
                                                 <option value="smoothing">Smoothing</option>
                                                 <option value="perming">Perming</option>
-                                                <option value="paket1">Paket 1 (Cukur rambut + keramas pijat + kepala)</option>
+                                                <option value="paket1">Paket 1 (Cukur rambut + keramas + pijat kepala)</option>
                                             </select>
                                         </div>
                                     </div>

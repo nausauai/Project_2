@@ -1,5 +1,6 @@
 <?php 
 include_once('templat/header.php')
+
 ?>
 
 <?php 
@@ -8,7 +9,7 @@ if(isset($_GET['id']) && isset($_POST['role'])){
 
     $id = $_GET['id'];
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
     $role = $_POST['role'];
     
     
@@ -57,13 +58,13 @@ if(isset($_GET['id']) && isset($_POST['role'])){
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <label class="form-label">Username</label>
-                                        <input type="text" class="form-control" name="username" maxlength="10" minlength="3" required>
+                                        <input type="text" class="form-control" name="username" maxlength="50" minlength="3" required>
                                     </div>
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <label class="form-label">Password</label>
-                                        <input type="text" class="form-control" name="password" min="10" max="200" required>
+                                        <input type="password" class="form-control" name="password" min="10" max="200" required>
                                     </div>
                                 </div>
                                 <label for="status" class="col-sm-3 col-form-label">Status</label>
