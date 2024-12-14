@@ -1,5 +1,6 @@
 <?php 
-include_once('templat/header.php')
+include_once('templat/header.php');
+
 ?>
 
 <section class="content">
@@ -39,9 +40,9 @@ include_once('templat/header.php')
                                 <?php 
                                 require('./koneksi.php');
                                 $sql = mysqli_query( $koneksi, "select * from transaksi");
-                                $sqlna = mysqli_query($koneksi, "select sum(harga) as harga from transaksi");
-                                $result = mysqli_fetch_assoc($sqlna);
-                                $total = $result['harga'];
+                                $result = mysqli_query($koneksi, "select sum(harga) as harga from transaksi");
+                                $data = mysqli_fetch_assoc($result);
+                                $total = $data['harga'];
                                 $no = 1;
                                 $simpen = '
                                         <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
@@ -66,9 +67,9 @@ include_once('templat/header.php')
                                             <th></th>
                                             <th></th>
                                             <th>Total :</th>
-                                            <th>'. $total . '</th>
+                                            <th>'. $total .'</th>
                                             <th>
-                                            
+
                                             </th>
                                         
                                         </tr>
@@ -124,34 +125,35 @@ include_once('templat/header.php')
                         </div>
                         <div class="modal-body">
                             <form method="post" action="tambah.php" >
-                                    <input type="hidden" class="form-control" id="tanggal" name="tanggal">
-                                    <input type="hidden" class="form-control" id="harga" name="harga">
 
-                                    <div class="form-group row">                       
-                                        <label for="nama_transaksi" class="col-sm-3 col-form-label"> Nama Transaksi</label>
-                                        <div class="col-sm-8">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" id="nama_transaksi" name="nama_transaksi">
-                                            </div>  
-                                        </div>
-                                        
-                                    </div>
-                                
-                                    
                                     <div class="form-group row">
-                                    <label for="member" class="col-sm-3 col-form-label">Member</label>
+                                    <label for="nama_user" class="col-sm-3 col-form-label">Nama</label>
                                         <div class="col-sm-8">
-                                            <select class="custom-select" name="member" id="member">
-                                                <option value="yes">Iya</option>
-                                                <option value="no">Bukan</option>
+                                            <select class="custom-select" name="nama_user" id="nama_user">
+                                                <?php 
+                                                    $sql = "select * from member";
+                                                    $result = mysqli_query($koneksi, $sql);
+                                                    
+
+                                                    while($data = mysqli_fetch_assoc($result)){
+                                                ?>
+                                                
+                                                <option value="<?= $data['nama']; ?>"> <?= $data['nama']; ?> - <?= $data['alamat']; ?> - <?= $data['status']; ?></option>
+                                                <?php 
+                                                    }
+                                                    ?>
                                             </select>
                                         </div>
                                     </div>
+
+                                
+                                    
+                                
                                     <div class="form-group row">
                                     <label for="layanan" class="col-sm-3 col-form-label">Layanan</label>
                                         <div class="col-sm-8">
                                             <select class="custom-select" name="layanan" id="layanan">
-                                                <option value="potong_rambut">Cukur rambut</option>
+                                                <option value="potong_rambut">Cukur rambut </option>
                                                 <option value="keramas_pijatkepala">keramas_pijat + kepala</option>
                                                 <option value="smoothing">Smoothing</option>
                                                 <option value="perming">Perming</option>

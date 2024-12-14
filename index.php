@@ -1,5 +1,6 @@
 <?php 
-include_once('templat/header.php')
+include_once('templat/header.php');
+;
 ?>
 
 <section class="content">

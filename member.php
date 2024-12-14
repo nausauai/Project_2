@@ -9,18 +9,18 @@ include_once('templat/header.php');
         if(tambah_member($_POST) > 0) {
 ?>   
             <div class="alert alert-success" role="alert">
-                 Data Berhasil disimpan!
-             </div>
+                Data Berhasil disimpan!
+            </div>
 
-             <script>
+            <script>
                 window.location.href = 'member.php';
-             </script>
+            </script>
 
         <?php
         } else {
         ?>
             <div class="alert alert-danger" role="alert">
-                 Data Gagal disimpan!
+                Data Gagal disimpan!
             </div>
 
         <?php

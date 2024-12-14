@@ -16,16 +16,18 @@ if(isset($_POST['adminn'])){
 }
 
 if(isset($_POST['transaksii'])) {
-    $namaTransaksi =  htmlspecialchars($_POST['nama_transaksi']);
-    $member = htmlspecialchars($_POST['member']);
+    $namaTransaksi =  htmlspecialchars($_POST['nama_user']);
     $tanggal = date("Y-m-d");
     $layanan = htmlspecialchars($_POST['layanan']);
-    $harga = htmlspecialchars($_POST['harga']);
     $harga = gethargaLayanan($layanan);
-
-    $sql = "insert into transaksi(nama,tanggal,layanan,harga,member) values ('$namaTransaksi','$tanggal','$layanan',$harga,'$member')";
+    $result = mysqli_query($koneksi, "select status from member where nama = '$namaTransaksi'");
+    $data = mysqli_fetch_assoc($result);
+    $status = $data['status'];
+    
+    $sql = "insert into transaksi(nama,tanggal,layanan,harga,member) values ('$namaTransaksi','$tanggal','$layanan',$harga, '$status')";
     if(mysqli_query($koneksi, $sql)){
         if(mysqli_affected_rows($koneksi) > 0){
+            
             echo "<script>alert('Data berhasil di tambahkan')</script>";
             echo "<script>window.location.href='transaksi.php'</script>";
         } else {

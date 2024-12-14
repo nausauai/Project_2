@@ -11,6 +11,7 @@ if(isset($_GET['id']) && isset($_POST['nama']) && isset($_POST['alamat']) && iss
         $alamat = $_POST['alamat'];
         $nomer = $_POST['nomer'];
         $role = $_POST['role'];
+        echo "<script>alert('$role')</script>";
         $sql = "update member set nama = '$nama_member', alamat = '$alamat', no_hp = '$nomer', status = '$role' where id_member = '$id'";
         if(mysqli_query($koneksi, $sql)){
             if(mysqli_affected_rows($koneksi) > 0 ){
@@ -53,7 +54,7 @@ if(isset($_GET['id']) && isset($_POST['nama']) && isset($_POST['alamat']) && iss
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <label class="form-label">Nama member</label>
-                                        <input type="text" class="form-control" name="nama" maxlength="10" minlength="3" required>
+                                        <input type="text" class="form-control" name="nama"  required>
                                     </div>
                                 </div>
                                 <div class="form-group form-float">
@@ -71,7 +72,7 @@ if(isset($_GET['id']) && isset($_POST['nama']) && isset($_POST['alamat']) && iss
                                 <label for="status" class="col-sm-3 col-form-label">Status</label>
                                         <div class="col-sm-8">
                                             <select class="custom-select" name="role" id="role">
-                                                <option value="Reguler">Reguler</option>
+                                                <option value="Regular">Reguler</option>
                                                 <option value="Vip">Vip</option>
                                             </select>
                                         </div>
