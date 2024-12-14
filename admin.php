@@ -1,6 +1,6 @@
 <?php 
 include_once('templat/header.php');
-session_start();
+require "./session.php";
 $role = $_SESSION['user_role'];
 if($role == 'Operator'){
     echo "<script>alert('Anda tidak memiliki akses')</script>";

@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if(!isset($_SESSION['login'])){
-    header('Location: login.php');
+    header('Location: ./login-register/index.php');
 }
 ?>
 
@@ -54,7 +54,7 @@ if(!isset($_SESSION['login'])){
     <link href="assets/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
 </head>
 
-<body class="theme-red">
+<body class="theme-black" style="background-color: #fffaf5; color: maroon">
   
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
@@ -71,7 +71,7 @@ if(!isset($_SESSION['login'])){
     </div>
     <!-- #END# Search Bar -->
     <!-- Top Bar -->
-    <nav class="navbar">
+    <nav class="navbar" style="background-color: #4f1919;">
         <div class="container-fluid" >
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
@@ -286,7 +286,7 @@ if(!isset($_SESSION['login'])){
                 </div>
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $_SESSION['username']; ?></div>
-                    <div class="email">suadirection@gmail.com</div>
+                    <div class="email"><?= $_SESSION['email']; ?></div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
